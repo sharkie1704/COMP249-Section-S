@@ -104,6 +104,34 @@ public class LinkedList {
     }
 
     // removeAfter (remove before)
+        public String removeAfter(String value) {
+            if (head == tail) {
+                return null;
+            }
+            else {
+                Node position = head;
+                while (position != tail && !position.data.equals(value)) {
+                    position = position.link;
+                }
+                if (position.link == null) {
+                        System.out.println("Value" + value + "does not exist in the list.");
+                        return null;
+                    } else if (position == tail) {
+                    System.out.println("There is no value after " + tail);
+                } else {
+                    String data = position.link.data;
+                    // Check if the removed value was on tail
+                    if (position.link == tail) {
+                        tail = position;
+                    }
+                            
+                    position.link = position.link.link;
+                    numberOfElements--;
+                    return data;
+                }
+            }
+    }
+    
     // contains: Check if a specific data (value) exists in the list
     // display (go through all elements and display each one)
     public void display() {
